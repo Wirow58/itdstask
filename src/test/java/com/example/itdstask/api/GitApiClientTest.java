@@ -2,8 +2,6 @@ package com.example.itdstask.api;
 
 import com.example.itdstask.exception.JsonParseException;
 import com.example.itdstask.exception.UserNotFoundException;
-import com.fasterxml.jackson.core.JsonProcessingException;
-import com.fasterxml.jackson.databind.JsonNode;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -19,11 +17,12 @@ public class GitApiClientTest{
 
     @Test
     public void shouldReturnValidResponse() throws UserNotFoundException, JsonParseException {
+        //given api client
         //when
-        JsonNode response = client.getUserJsonResponse("octocat");
+        UserApiResponse response = client.getUserResponse("octocat");
         //then
-        assertNotNull(response.path("name").asText());
-        assertEquals("User", response.path("type").asText());
+        assertNotNull(response.getName());
+        assertEquals("User", response.getType());
     }
 
 }

@@ -4,9 +4,11 @@ import com.example.itdstask.user.UserRequestCount;
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.stereotype.Repository;
 
+import java.util.Optional;
+
 @Repository
 public interface UserRequestCountsRepository extends CrudRepository<UserRequestCount, Long> {
 
-    UserRequestCount findByLogin(String login);
+    Optional<UserRequestCount> findByLogin(String login);
 
 }

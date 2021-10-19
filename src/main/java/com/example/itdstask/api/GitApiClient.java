@@ -25,12 +25,13 @@ public class GitApiClient {
         this.objectMapper = objectMapper;
     }
 
-    public JsonNode getUserJsonResponse(String login) throws UserNotFoundException, JsonParseException {
+    public UserApiResponse getUserResponse(String login) throws UserNotFoundException, JsonParseException {
         ResponseEntity<String> rawResponse = restTemplate.getForEntity(baseUrl + "/" + login, String.class);
         if (rawResponse.getStatusCode() != HttpStatus.OK) throw new UserNotFoundException();
         try {
-            return objectMapper.readTree(rawResponse.getBody());
+            return objectMapper.readValue(rawResponse.getBody(), UserApiResponse.class);
         } catch (JsonProcessingException e) {
+            e.printStackTrace();
             throw new JsonParseException();
         }
     }
