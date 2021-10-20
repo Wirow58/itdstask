@@ -1,6 +1,7 @@
 package com.example.itdstask.api;
 
 import com.fasterxml.jackson.annotation.JsonAlias;
+import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -21,6 +22,7 @@ public class UserApiResponse {
     @JsonAlias(value = "avatar_url")
     private String avatarUrl;
     @JsonAlias(value = "created_at")
+    @JsonFormat(pattern = "yyyy-MM-dd'T'HH:mm:ss'Z'", shape = JsonFormat.Shape.STRING)
     private LocalDateTime createdAt;
     @JsonAlias(value = "public_repos")
     private Integer publicRepos;

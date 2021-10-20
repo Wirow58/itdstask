@@ -14,6 +14,10 @@ configurations {
     }
 }
 
+bootRun {
+    systemProperties System.properties
+}
+
 repositories {
     mavenCentral()
 }
