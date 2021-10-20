@@ -8,8 +8,8 @@ public class CalculationService {
 
     public Float calculate(UserApiResponse apiResponse) {
         Integer repos = apiResponse.getPublicRepos();
-        if (apiResponse.getPublicRepos() == null) repos = 0;
-        if (apiResponse.getFollowers() == 0 || apiResponse.getFollowers() == null) return Float.NaN;
+        if (repos == null) repos = 0;
+        if (apiResponse.getFollowers() == null || apiResponse.getFollowers() == 0) return Float.NaN;
         return (float) 6 / apiResponse.getFollowers() * (2 + repos);
     }
 

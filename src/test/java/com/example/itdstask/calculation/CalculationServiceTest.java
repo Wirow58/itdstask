@@ -30,6 +30,16 @@ public class CalculationServiceTest {
             8,
             0);
 
+    private final UserApiResponse nullDataFollowersResponse = new UserApiResponse(
+            1,
+            "someLogin",
+            "Test Testowski",
+            "User",
+            "https://google.com",
+            LocalDateTime.now(),
+            null,
+            null);
+
     private final float eps = 0.0001F;
 
     private final CalculationService service = new CalculationService();
@@ -50,6 +60,16 @@ public class CalculationServiceTest {
         float result = service.calculate(noFollowersResponse);
         //then
         assertTrue(Float.isNaN(result));
+    }
+
+    @Test
+    public void givenNullShouldReturnNan() {
+        //given service instance and response with null numeric fields
+        //when
+        float result = service.calculate(nullDataFollowersResponse);
+        //then
+        assertTrue(Float.isNaN(result));
+
     }
 
 }
