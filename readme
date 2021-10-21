@@ -10,4 +10,6 @@ To run the application first build it with command ./gradlew build and then run 
 Application exposes a single endpoint under GET /users/{login} path which returns data of the user with given login
 from api.github.com domain alongside with proper calculations. If the user does not exist endpoint will return
 404 status with a appropriate message. If the calculation cannot be done (for example when the number of followers is 0)
-NaN value will be returned.
+NaN value will be returned. For every successful request counter will be increased by one in user_request_counts table
+in a row corresponding to the given login. If given login will appear for the first time in the system and
+the application would receive valid data the new row will be created for that login.
