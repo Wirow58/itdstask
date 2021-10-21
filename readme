@@ -1,11 +1,13 @@
 This is a demo application done for ITDS by Bartosz Kowalski as a part of the recruitment process.
 
-Before running this application please make sure you have installed postgresql and created new empty database
-and then change spring.datasource.url spring.datasource.username and spring.datasource.password properties
-to valid ones (in application.properties file or by flags with ./gradlew bootrun command).
+Before running this application please make sure you have installed PostgreSQL and created new empty database.
+Then change spring.datasource.url spring.datasource.username and spring.datasource.password properties
+to valid ones (in application.properties file or by flags with ./gradlew bootrun command, like:
+./gradlew -Dspring.datasource.url=jdbc:postgresql://localhost:5432/demo bootRun   ).
+
 
 To run the application first build it with command ./gradlew build and then run it by ./gradlew bootrun
-Application exposes single endpoint under GET /users/{login} path which returns data of user with given login
+Application exposes a single endpoint under GET /users/{login} path which returns data of the user with given login
 from api.github.com domain alongside with proper calculations. If the user does not exist endpoint will return
-404 status with appropriate message. If the calculation cannot be done (for example when the number of followers is 0)
+404 status with a appropriate message. If the calculation cannot be done (for example when the number of followers is 0)
 NaN value will be returned.
