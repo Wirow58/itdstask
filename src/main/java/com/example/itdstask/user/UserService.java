@@ -8,6 +8,7 @@ import com.example.itdstask.user.mapper.UserMapper;
 import com.example.itdstask.user.repository.UserRequestCountsRepository;
 import org.springframework.stereotype.Component;
 
+import javax.transaction.Transactional;
 import java.util.Optional;
 
 @Component
@@ -23,6 +24,7 @@ public class UserService {
         this.mapper = mapper;
     }
 
+    @Transactional
     public UserDTO getUser(String login) throws UserNotFoundException, JsonParseException {
         UserApiResponse response = apiClient.getUserResponse(login);
         Optional<UserRequestCount> userCountOpt = repository.findByLogin(response.getLogin());
